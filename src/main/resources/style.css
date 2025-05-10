@@ -1,0 +1,65 @@
+
+
+#mainGridPane{
+    -fx-background-image: url("assets/wood-bg.png");
+}
+
+#gridLevel1{
+    -fx-background-insets: 0,0 0 5 5, 0 0 6 6, 0 0 7 7;
+    -fx-background-radius: 8;
+    -fx-background-color:
+            linear-gradient(from 0% 80% to 0% 100%, #2f2b23 0%, #3d3530 100%),
+            #2f2b23,
+            #656057,
+            radial-gradient(center 50% 50%, radius 100%, #544e45, #49433a);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+
+#rulesPane{
+    -fx-effect: dropshadow(three-pass-box, rgba(192,172,132,0.6), 10, 0, 0, 0);
+}
+
+.root {
+    -fx-font-family: "Gome Pixel Rounded";
+    /*-fx-font-size: 14px;*/
+}
+
+#gameTitle{
+    -fx-font-family: "Gome Pixel Rounded";
+    -fx-text-fill: white;
+    -fx-background-color: #d1c1a4;
+}
+
+.button {
+    -fx-padding: 2 2 2 2;
+    -fx-background-insets: 0,0 0 2 2, 0 0 3 3, 0 0 4 5;
+    -fx-background-radius: 8;
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+            #9d4024,
+            #d86e3a,
+            radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+.button:hover {
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+            #9d4024,
+            #d86e3a,
+            radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+}
+.button:pressed {
+    -fx-padding: 3 2 1 2;
+    -fx-background-insets: 1 0 0 0,1 0 1 1, 1 0 2 2, 1 0 3 3;
+}
+.button Text {
+
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+}
+
+
