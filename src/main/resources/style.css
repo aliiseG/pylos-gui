@@ -27,9 +27,8 @@
 }
 
 #gameTitle{
-    -fx-font-family: "Gome Pixel Rounded";
-    -fx-text-fill: white;
-    -fx-background-color: #d1c1a4;
+    -fx-font-family: "Poxast";
+    /*-fx-background-color: #d1c1a4;*/
 }
 
 .button {
@@ -37,20 +36,20 @@
     -fx-background-insets: 0,0 0 2 2, 0 0 3 3, 0 0 4 5;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+            linear-gradient(from 0% 93% to 0% 100%, #CCB696 0%, #C4AF90 100%),
+            #DCCAA9,
+            #FAEBCF,
+            radial-gradient(center 50% 50%, radius 100%, #FAEBCF, #F1E2C6);
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
 }
 .button:hover {
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+            linear-gradient(from 0% 93% to 0% 100%, #CCB696 0%, #C4AF90 100%),
+            #DCCAA9,
+            #FAEBCF,
+            radial-gradient(center 50% 50%, radius 100%, #FAEBCF, #F1E2C6);
 }
 .button:pressed {
     -fx-padding: 3 2 1 2;
@@ -59,7 +58,7 @@
 .button Text {
 
     -fx-fill: white;
-    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+    -fx-effect: dropshadow( gaussian , #3d3630, 0,0,0,2 );
 }
 
 

@@ -5,9 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
+import javafx.scene.paint.*;
 import javafx.scene.shape.Circle;
 
 import java.io.BufferedReader;
@@ -57,9 +59,16 @@ public class GameClientController {
 //            gridLevel3.getChildren().clear();
 //            gridLevel4.getChildren().clear();
 //        }
+        Image lightSphere = new Image(getClass().getResource("/assets/Ball-light.png").toExternalForm());
+        Image darkSphere = new Image(getClass().getResource("/assets/Ball-dark.png").toExternalForm());// Level sizes
+        Image defaultSphere = new Image(getClass().getResource("/assets/Ball-default.png").toExternalForm());// Level sizes
 
+        DropShadow shadow = new DropShadow();
+        shadow.setOffsetX(-2); // Less shift to the left
+        shadow.setOffsetY(2);  // Less shift downward
+        shadow.setRadius(3);   // Smaller blur radius
+        shadow.setColor(Color.rgb(0, 0, 0, 0.3));
 
-        // Level sizes
         int[] sizes = {4, 3, 2, 1};
         int index = 0;
 
@@ -73,12 +82,12 @@ public class GameClientController {
                 for (int col = 0; col < size; col++) {
                     String symbol = boardSpaces.get(index++);
                     Circle circle = new Circle(20);
-                    circle.setStroke(Color.BLACK);
+                    circle.setEffect(shadow);
                     circle.setFill(
                             switch (symbol) {
-                                case "*" -> Color.CORNFLOWERBLUE;
-                                case "#" -> Color.CRIMSON;
-                                default -> Color.LIGHTGRAY;
+                                case "*" -> new ImagePattern(lightSphere, 0, 0, 1, 1, true);
+                                case "#" -> new ImagePattern(darkSphere, 0, 0, 1, 1, true);
+                                default -> new ImagePattern(defaultSphere, 0, 0, 1, 1, true);
                             }
                     );
                     StackPane centeredCell = new StackPane(circle);

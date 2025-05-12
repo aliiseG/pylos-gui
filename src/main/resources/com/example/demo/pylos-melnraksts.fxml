@@ -96,9 +96,9 @@
                 </StackPane>
             </children>
         </HBox>
-        <Label id="gameTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="603.0" text="PYLOS" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="3">
+        <Label id="gameTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="603.0" text="pylos" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="3">
             <font>
-                <Font size="48.0" />
+                <Font size="30.0" />
             </font>
         </Label>
         <GridPane prefHeight="48.0" prefWidth="307.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
@@ -127,8 +127,7 @@
                 <Button fx:id="resetBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="18.0" prefWidth="74.0" text="Reset" GridPane.columnIndex="1" />
             </children>
         </GridPane>
-        <Label fx:id="messageArea" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="603.0" text="output console logs here" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      <ScrollPane id="rulesPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" fitToWidth="true" fitToHeight="true">
+      <ScrollPane id="rulesPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <content>
             <Label fx:id="rulesLabel" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="Infinity" prefWidth="Infinity" textAlignment="CENTER" wrapText="true">
                <padding>
@@ -136,5 +135,15 @@
                </padding></Label>
          </content>
       </ScrollPane>
+      <GridPane GridPane.columnIndex="3" GridPane.rowIndex="2">
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+              <Label fx:id="messageArea" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="603.0" text="output console logs here" textAlignment="CENTER" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="323.0" text="Amount of spheres left: &lt;amount&gt;" textAlignment="CENTER" />
+         </children>
+      </GridPane>
     </children>
 </GridPane>
