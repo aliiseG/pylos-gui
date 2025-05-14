@@ -26,18 +26,17 @@ public class PylosGame {
     public void startGame() {
         printGameRules();
         while (gameBoard.checkWinner().equals(" ")) {
-            // nosuta visiem speletajiem tekoso speles lauku
-            gameServer.broadcast(gameBoard.getBoardString());
-            gameServer.broadcast("Current player: " + currentPlayer.getSymbol());
-            // Move move = null;
-            // while (move==null){
-            //     move = getMoveFromServer();
-            // }
+            // send both players board status to draw spheres on boards
+            gameServer.broadcast("BOARD:" + gameBoard.getCurrentGameboard());
+
+            gameServer.sendToPlayer(currentPlayer, "SPHERES LEFT:"+currentPlayer.getSphereCount());
+            gameServer.sendToPlayer(currentPlayer == player1 ? player2 : player1, "SPHERES LEFT:"+(currentPlayer == player1 ? player2 : player1).getSphereCount());
+            // output to players whos turn it is
+            gameServer.notifyPlayersTurn(currentPlayer, currentPlayer == player1 ? player2 : player1);
 
             Move move = getMoveFromServer();
             if (move != null) {
                 move.makeMove(gameBoard);
-                gameServer.broadcast("Player " + currentPlayer.getSymbol() + " after this move has: " + currentPlayer.spheres);
                 switchTurn();
             }
         }
@@ -45,31 +44,33 @@ public class PylosGame {
     }
 
     private void switchTurn() {
-        currentPlayer = (currentPlayer == player1) ? player2 : player1;
+        // switches to other player only if they have spheres left to use
+        Player otherPlayer = (currentPlayer == player1) ? player2 : player1;
+        if (otherPlayer.hasSpheres()) {
+            currentPlayer = otherPlayer;
+        }
     }
 
     // get move as string through server from player, check and return as Move object
     private Move getMoveFromServer() {
         Move move = null;
         String moveInput;
-        String playersMoveInput = gameServer.sendToPlayer(currentPlayer, "INPUT: Select move type: place new (p) + space / remove existing (r) + space / move existing (m) + one or two spaces.  Or exit game (e) / restart (re)");
+        // Send to client (who is current player) request for input
+        String playersMoveInput = gameServer.sendToPlayer(currentPlayer, "INPUT: Select move type: place new (place) + space / remove existing (remove) + space. Or exit game (e) / restart (re)");
+        // DELETE LATER
         if (playersMoveInput != null) {
             gameServer.broadcast(playersMoveInput);
         } else gameServer.broadcast("kkas nav");
         int spaceInput;
         int spaceInput2;
-        int moveFromSpaceInput;
         try {
             String[] inputParts = playersMoveInput.split(" ");
             if (!inputParts[0].equals("place") &&
                     !inputParts[0].equals("remove") &&
-                    !inputParts[0].equals("move") &&
                     !inputParts[0].equals("e") &&
                     !inputParts[0].equals("re")) {
                 gameServer.sendToPlayer(currentPlayer,
                         "Invalid input!!!!!");
-                // move = getMoveFromServer();
-                //return null;
             } else {
                 switch (inputParts[0]) {
                     case ("place"):
@@ -84,12 +85,11 @@ public class PylosGame {
                         break;
                     case ("remove"):
                         if (gameBoard.checkRemoveRule(currentPlayer)) {
-                            System.out.println(gameBoard.checkRemoveRule(currentPlayer));
                             int amountToRemove = inputParts.length;
                             boolean validMove = false;
 
                             while (!validMove) {
-                                if (amountToRemove == 1) {
+                                if (amountToRemove == 2) {
                                     spaceInput = Integer.parseInt(inputParts[1]);
                                     if (gameBoard.checkRemoveSphere(spaceInput, currentPlayer)) {
                                         move = new RemoveExisting(spaceInput, 42, currentPlayer); // 42 as dummy
@@ -98,7 +98,7 @@ public class PylosGame {
                                         gameServer.sendToPlayer(currentPlayer, "Invalid space. Try again.");
                                     }
 
-                                } else if (amountToRemove == 2) {
+                                } else if (amountToRemove == 3) {
                                     spaceInput = Integer.parseInt(inputParts[1]);
                                     spaceInput2 = Integer.parseInt(inputParts[2]);
 
@@ -121,8 +121,6 @@ public class PylosGame {
                                     "You have no spheres to remove!");
                             break;
                         }
-                        break;
-                    case ("move"):
                         break;
                     case ("e"):
                         gameServer.broadcast("Game exited, goodbye!");
@@ -148,11 +146,11 @@ public class PylosGame {
                     "Invalid input!!");
             move = getMoveFromServer();
         }
-        ;
+
         return move;
     }
 
-    ;
+
 
     public void printGameRules() {
         gameServer.broadcast("\nWelcome to PYLOS!\n" +
