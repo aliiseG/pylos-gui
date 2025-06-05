@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <GridPane id="mainGridPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.GameClientController">
@@ -14,86 +15,99 @@
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="463.0" minWidth="10.0" prefWidth="48.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="97.33332951863606" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="29.333337148030594" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="347.0" minHeight="10.0" prefHeight="319.0" valignment="CENTER" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="148.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <HBox alignment="CENTER" prefHeight="320.0" prefWidth="420.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <HBox alignment="CENTER" prefHeight="320.0" prefWidth="420.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
             <children>
-                <StackPane alignment="CENTER_RIGHT" prefHeight="312.0" prefWidth="320.0">
+            <GridPane prefHeight="303.0" prefWidth="278.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="36.333333333333336" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="266.33333333333337" minHeight="10.0" prefHeight="266.33333333333337" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                      <StackPane alignment="CENTER_RIGHT" prefHeight="312.0" prefWidth="320.0" GridPane.rowIndex="1">
 
-                    <children>
-                        <!-- Base Level -->
-                        <GridPane fx:id="gridLevel1" alignment="CENTER" StackPane.alignment="CENTER">
-                            <columnConstraints>
-                                <ColumnConstraints prefWidth="50.0" />
-                                <ColumnConstraints prefWidth="50.0" />
-                                <ColumnConstraints prefWidth="50.0" />
-                                <ColumnConstraints prefWidth="50.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints prefHeight="50.0" />
-                                <RowConstraints prefHeight="50.0" />
-                                <RowConstraints prefHeight="50.0" />
-                                <RowConstraints prefHeight="50.0" />
-                            </rowConstraints>
-                        </GridPane>
+                          <children>
+                              <!-- Base Level -->
+                              <GridPane fx:id="gridLevel1" alignment="CENTER" StackPane.alignment="CENTER">
+                                  <columnConstraints>
+                                      <ColumnConstraints prefWidth="50.0" />
+                                      <ColumnConstraints prefWidth="50.0" />
+                                      <ColumnConstraints prefWidth="50.0" />
+                                      <ColumnConstraints prefWidth="50.0" />
+                                  </columnConstraints>
+                                  <rowConstraints>
+                                      <RowConstraints prefHeight="50.0" />
+                                      <RowConstraints prefHeight="50.0" />
+                                      <RowConstraints prefHeight="50.0" />
+                                      <RowConstraints prefHeight="50.0" />
+                                  </rowConstraints>
+                              </GridPane>
 
-                        <!-- Level 2 -->
-                        <GridPane fx:id="gridLevel2" alignment="CENTER">
-                            <columnConstraints>
-                                <ColumnConstraints prefWidth="50.0" />
-                                <ColumnConstraints prefWidth="50.0" />
-                                <ColumnConstraints prefWidth="50.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints prefHeight="50.0" />
-                                <RowConstraints prefHeight="50.0" />
-                                <RowConstraints prefHeight="50.0" />
-                            </rowConstraints>
-                     <StackPane.margin>
-                        <Insets bottom="5.0" left="5.0" />
-                     </StackPane.margin>
-                        </GridPane>
+                              <!-- Level 2 -->
+                              <GridPane fx:id="gridLevel2" alignment="CENTER">
+                                  <columnConstraints>
+                                      <ColumnConstraints prefWidth="50.0" />
+                                      <ColumnConstraints prefWidth="50.0" />
+                                      <ColumnConstraints prefWidth="50.0" />
+                                  </columnConstraints>
+                                  <rowConstraints>
+                                      <RowConstraints prefHeight="50.0" />
+                                      <RowConstraints prefHeight="50.0" />
+                                      <RowConstraints prefHeight="50.0" />
+                                  </rowConstraints>
+                           <StackPane.margin>
+                              <Insets bottom="5.0" left="5.0" />
+                           </StackPane.margin>
+                              </GridPane>
 
-                        <!-- Level 3 -->
-                        <GridPane fx:id="gridLevel3" alignment="CENTER">
-                            <columnConstraints>
-                                <ColumnConstraints prefWidth="50.0" />
-                                <ColumnConstraints prefWidth="50.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints prefHeight="50.0" />
-                                <RowConstraints prefHeight="50.0" />
-                            </rowConstraints>
-                     <StackPane.margin>
-                        <Insets bottom="10.0" left="10.0" />
-                     </StackPane.margin>
-                        </GridPane>
+                              <!-- Level 3 -->
+                              <GridPane fx:id="gridLevel3" alignment="CENTER">
+                                  <columnConstraints>
+                                      <ColumnConstraints prefWidth="50.0" />
+                                      <ColumnConstraints prefWidth="50.0" />
+                                  </columnConstraints>
+                                  <rowConstraints>
+                                      <RowConstraints prefHeight="50.0" />
+                                      <RowConstraints prefHeight="50.0" />
+                                  </rowConstraints>
+                           <StackPane.margin>
+                              <Insets bottom="10.0" left="10.0" />
+                           </StackPane.margin>
+                              </GridPane>
 
-                        <!-- Level 4 -->
-                        <GridPane fx:id="gridLevel4" alignment="CENTER">
-                            <columnConstraints>
-                                <ColumnConstraints prefWidth="50.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints prefHeight="50.0" />
-                            </rowConstraints>
-                     <StackPane.margin>
-                        <Insets bottom="15.0" left="15.0" />
-                     </StackPane.margin>
-                        </GridPane>
-                    </children>
-               <HBox.margin>
-                  <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-               </HBox.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-                </StackPane>
+                              <!-- Level 4 -->
+                              <GridPane fx:id="gridLevel4" alignment="CENTER" prefHeight="263.0" prefWidth="306.0">
+                                  <columnConstraints>
+                                      <ColumnConstraints prefWidth="50.0" />
+                                  </columnConstraints>
+                                  <rowConstraints>
+                                      <RowConstraints prefHeight="50.0" />
+                                  </rowConstraints>
+                           <StackPane.margin>
+                              <Insets bottom="15.0" left="15.0" />
+                           </StackPane.margin>
+                              </GridPane>
+                          </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets bottom="40.0" left="20.0" right="20.0" />
+                     </GridPane.margin>
+                      </StackPane>
+                  <Label fx:id="playerTurnDisplay" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="323.0" text="Current player" textAlignment="CENTER" />
+               </children>
+            </GridPane>
             </children>
         </HBox>
         <Label id="gameTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="603.0" text="pylos" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="3">
@@ -101,7 +115,7 @@
                 <Font size="30.0" />
             </font>
         </Label>
-        <GridPane prefHeight="48.0" prefWidth="307.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+        <GridPane prefHeight="48.0" prefWidth="307.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
             <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="160.0" />
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="160.0" />
@@ -110,11 +124,11 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Button fx:id="placeNewBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="135.0" text="Place new" textAlignment="CENTER" />
+                <Button fx:id="placeNewBtn" onAction="#startMove" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="135.0" text="Place new" textAlignment="CENTER" />
                 <Button fx:id="removeBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="135.0" text="Remove" textAlignment="CENTER" GridPane.columnIndex="1" />
             </children>
         </GridPane>
-        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -123,27 +137,48 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Button fx:id="exitBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="74.0" text="Exit" />
-                <Button fx:id="resetBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="18.0" prefWidth="74.0" text="Reset" GridPane.columnIndex="1" />
+                <Button fx:id="exitBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exitProgram" prefHeight="20.0" prefWidth="74.0" text="Exit" />
+                <Button fx:id="resetBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#restartGame" prefHeight="20.0" prefWidth="74.0" text="Reset" GridPane.columnIndex="1" />
             </children>
         </GridPane>
-      <ScrollPane id="rulesPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <content>
-            <Label fx:id="rulesLabel" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="Infinity" prefWidth="Infinity" textAlignment="CENTER" wrapText="true">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding></Label>
-         </content>
-      </ScrollPane>
-      <GridPane GridPane.columnIndex="3" GridPane.rowIndex="2">
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-              <Label fx:id="messageArea" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="603.0" text="output console logs here" textAlignment="CENTER" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="323.0" text="Amount of spheres left: &lt;amount&gt;" textAlignment="CENTER" />
-         </children>
-      </GridPane>
+        <ScrollPane id="rulesPane" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <content>
+                <VBox fillWidth="true">
+                    <Label fx:id="rulesLabel" alignment="TOP_CENTER" contentDisplay="CENTER" textAlignment="CENTER" wrapText="true">
+                        <padding>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        </padding>
+                    </Label>
+                </VBox>
+            </content>
+        </ScrollPane>
+        <GridPane GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.99999237060547" minWidth="10.0" prefWidth="191.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.99998474121094" minWidth="10.0" prefWidth="85.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="10.0" prefWidth="45.666666666666686" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Spheres left:" textAlignment="RIGHT" wrappingWidth="80.927734375" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets />
+                </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You are player:" wrappingWidth="137.056640625" GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets left="10.0" />
+                </GridPane.margin>
+            </Text>
+            <Text fx:id="playerSphereCount" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Circle fx:id="playerSphereDisplay" fill="lightslategrey" radius="9.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="1">
+                <GridPane.margin>
+                    <Insets left="100.0" />
+                </GridPane.margin>
+            </Circle>
+        </GridPane>
+        <Label fx:id="messageArea" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="603.0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3" />
     </children>
 </GridPane>

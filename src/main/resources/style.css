@@ -4,6 +4,10 @@
     -fx-background-image: url("assets/wood-bg.png");
 }
 
+/*#playerSphereCount{*/
+/*    -fx-font-family: "Dogica Pixel";*/
+/*}*/
+
 #gridLevel1{
     -fx-background-insets: 0,0 0 5 5, 0 0 6 6, 0 0 7 7;
     -fx-background-radius: 8;
@@ -28,7 +32,6 @@
 
 #gameTitle{
     -fx-font-family: "Poxast";
-    /*-fx-background-color: #d1c1a4;*/
 }
 
 .button {
