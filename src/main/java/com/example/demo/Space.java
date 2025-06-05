@@ -15,44 +15,41 @@ public class Space {
         this.spaceLevel = spaceLevel;
         this.spaceRow = spaceRow;
         this.spaceCol = spaceCol;
-    };
+    }
 
     // setter and getter for spacePlayer
     public void setSpaceNumber(int spaceNumber){
         this.spaceNumber = spaceNumber;
-    };
+    }
     public int getSpaceNumber(){
         return this.spaceNumber;
-    };
+    }
 
     // setter and getter for spacePlayer
     public void setSpacePlayer(String playerSymbol){
         this.spacePlayer = playerSymbol;
-    };
+    }
     public String getSpacePlayer(){
         return this.spacePlayer;
-    };
+    }
 
     // setter and getter for spaceAvailability
     public void setSpaceAvailability(Boolean availability){
         this.spaceAvailability = availability;
-    };
+    }
     public Boolean getSpaceAvailability(){
         return this.spaceAvailability;
-    };
-
+    }
     // getters for spaceLevel, spaceRow and spaceCol
     public int getSpaceLevel(){
         return this.spaceLevel;
-    };
-
+    }
     public int getSpaceRow(){
         return this.spaceRow;
-    };
+    }
 
     public int getSpaceCol(){
         return this.spaceCol;
-    };
-
+    }
 }
 

@@ -13,9 +13,8 @@ public class GameClient extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Get custom game fonts & icon for window
-        Font.loadFont(getClass().getResourceAsStream("/assets/GomePixel-ARjd7.otf"), 36);
+        Font.loadFont(getClass().getResourceAsStream("/assets/GomePixelRounded-Regular.otf"), 36);
         Font.loadFont(getClass().getResourceAsStream("/assets/Poxast-R9Jjl.ttf"), 36);
-        Font.loadFont(getClass().getResourceAsStream("/assets/dogicapixel.otf"), 36);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/assets/pylos-game-icon.png")));
 
         // Load fxml file for layout

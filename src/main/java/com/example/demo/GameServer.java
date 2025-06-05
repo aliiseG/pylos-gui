@@ -1,12 +1,7 @@
 package com.example.demo;
 
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-
 import java.io.*;
 import java.net.*;
-import java.util.*;
 
 public class GameServer {
     private ServerSocket serverSocket;
@@ -14,10 +9,9 @@ public class GameServer {
     private Socket player2Socket;
     private BufferedReader in1, in2;
     private PrintWriter out1, out2;
-    private PylosGame gameInstance;
 
     public void start(int port) throws IOException {
-        // create serversocket
+        // create server socket
         serverSocket = new ServerSocket(port);
         System.out.println("Waiting for players...");
 
@@ -33,7 +27,7 @@ public class GameServer {
         out2.println("PLAYER SYMBOL:Connected as Player #");
 
         // create new game instance, start game
-        gameInstance = new PylosGame(this);
+        PylosGame gameInstance = new PylosGame(this);
         gameInstance.startGame();
     }
 
@@ -51,7 +45,7 @@ public class GameServer {
 
     // send message to only one player
     public String sendToPlayer(Player targetPlayer, String msg){
-        String moveInput = null;
+        String moveInput;
         try {
             PrintWriter out = targetPlayer.getSymbol().equals("*") ? out1 : out2;
             BufferedReader in = targetPlayer.getSymbol().equals("*") ? in1 : in2;

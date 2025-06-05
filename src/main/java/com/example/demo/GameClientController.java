@@ -12,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.*;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import org.controlsfx.control.spreadsheet.Grid;
 
 import java.io.BufferedReader;
@@ -36,22 +37,30 @@ public class GameClientController {
     @FXML private GridPane gridLevel4;
     @FXML private Circle playerSphereDisplay;
     @FXML private Label playerTurnDisplay;
-    @FXML private Label playerSphereCount;
+    @FXML private Text playerSphereCount;
     private ImagePattern spherePattern1;
     private ImagePattern spherePattern2;
     private ImagePattern spherePatternEmpty;
+//    private Boolean startInputPrompt = false;
 
     @FXML
     private void exitProgram(ActionEvent event) {
+        // out.println("e");
         Platform.exit();
         System.exit(0);
     }
 
-//    @FXML
-//    private void restartGame(ActionEvent event) {
-//        gameInstance = new PylosGame(this);
-//        gameInstance.startGame();
-//    }
+    @FXML
+    private void restartGame(ActionEvent event) {
+        out.println("re");
+    }
+
+    @FXML
+    private void startMove(ActionEvent event) {
+        if (playerTurnDisplay.getText().contains("Your turn")) {
+            showInputDialog("Select move type: place new (place) + space / remove existing (remove) + space. Or exit game (e) / restart (re)");
+        } else handleServerMessage("OUTPUT: Wait for your turn!");
+    }
 
     private PrintWriter out;
     private BufferedReader in;
@@ -75,11 +84,9 @@ public class GameClientController {
             }
         }).start();
     }
-    public void drawNewBoard(Board board) {
 
-    }
     public void drawBoard(List<String> boardSpaces) {
-        // Clear spheres from before
+        // clear spheres from before (useful when restarting game)
         if (gridLevel1.getChildren() != null || gridLevel2.getChildren() != null || gridLevel3.getChildren() != null || gridLevel4.getChildren() != null) {
             gridLevel1.getChildren().clear();
             gridLevel2.getChildren().clear();
@@ -146,11 +153,7 @@ public class GameClientController {
                                 break;
                             default:
                                 circle.setFill(spherePatternEmpty);
-                                circle.setOpacity(0.5); // Fully transparent initially
-
-                                // Add hover behavior only for empty spaces
-                                //circle.setOnMouseEntered(e -> circle.setOpacity(0.5)); // 50% visible on hover
-                                //circle.setOnMouseExited(e -> circle.setOpacity(0.0));  // Back to invisible
+                                circle.setOpacity(0.5);
                                 break;
                         }
                         StackPane centeredCell = new StackPane(circle);
@@ -162,39 +165,89 @@ public class GameClientController {
         }
     }
 
-
+    // decide what happens after getting message from server
     private void handleServerMessage(String msg) {
-        if (msg.startsWith("INPUT:")) {
-            // Prompt for player input using GUI
-            showInputDialog(msg);
-        } else if (msg.startsWith("BOARD:")) {
+        // prompt for player input calling a popup window
+//        if (msg.startsWith("INPUT:")) {
+//            if (startInputPrompt){
+//                showInputDialog(msg);
+//            }
+//        }
+        // get current board state and draw it on players board
+        if (msg.startsWith("BOARD:")) {
             String boardString = msg.substring("BOARD:".length());
             List<String> boardStringArr = Arrays.asList(boardString.split(","));
             drawBoard(boardStringArr);
-        } else if (msg.startsWith("PLAYER SYMBOL:")){
+        }
+        // display to each player their sphere colors
+        else if (msg.startsWith("PLAYER SYMBOL:")){
             if (msg.contains("*")){
                 playerSphereDisplay.setFill(spherePattern1);
             } else if (msg.contains("#")){
                 playerSphereDisplay.setFill(spherePattern2);
             }
-        } else if (msg.startsWith("TURN:")){
+        }
+        // display message that its the players turn to make a move
+        else if (msg.startsWith("TURN:")){
             playerTurnDisplay.setText(msg.substring("TURN:".length()));
-        } else if (msg.startsWith("WAIT TURN:")){
+        }
+        // display message that its the other players turn to make a move
+        else if (msg.startsWith("WAIT TURN:")){
             playerTurnDisplay.setText(msg.substring("WAIT TURN:".length()));
-        } else if (msg.startsWith("SPHERES LEFT:")){
+        }
+        // display for each player how many spheres they have left
+        else if (msg.startsWith("SPHERES LEFT:")){
             playerSphereCount.setText(msg.substring("SPHERES LEFT:".length()));
         }
-        else{
-            messageArea.setText(msg + "\n");
+        // display a message under board from server - errors, invalid move, etc.
+        else if (msg.startsWith("OUTPUT")){
+            messageArea.setText(msg.substring("OUTPUT:".length()));
         }
+//        else{
+//            messageArea.setText(msg + "\n");
+//        }
     }
     private void displayRules(){
         rulesLabel.setText("Welcome to PYLOS!\n" +
                 "\nGoal of the game is to be the player to place the last sphere on top of the pyramid.\n" +
                 "\nEach player has fifteen spheres and the pyramid has four levels in total.\n" +
-                "\nSelect type of move (place new or remove) and then select the space you wish to use.\n");
+                "\nSelect type of move (place new or remove) and then select the space you wish to use.\n" +
+                "\nYou can remove one or two spheres if you make a 2x2 square of your color.\n" +
+                "\nSpaces on level one:\n\n" +
+                "   |-----|-----|-----|-----|\n" +
+                "   |  0  |  1  |  2  |  3  |\n" +
+                "   |-----|-----|-----|-----|\n" +
+                "   |  4  |  5  |  6  |  7  |\n" +
+                "   |-----|-----|-----|-----|\n" +
+                "   |  8  |  9  | 10  | 11  |\n" +
+                "   |-----|-----|-----|-----|\n" +
+                "   | 12  | 13  | 14  | 15  |\n" +
+                "   |-----|-----|-----|-----|\n" +
+
+                "\nSpaces on level two:\n\n" +
+                "   |-----|-----|-----|\n" +
+                "   | 16  | 17  | 18  |\n" +
+                "   |-----|-----|-----|\n" +
+                "   | 19  | 20  | 21  |\n" +
+                "   |-----|-----|-----|\n" +
+                "   | 22  | 23  | 24  |\n" +
+                "   |-----|-----|-----|\n" +
+
+                "\nSpaces on level three:\n\n" +
+                "   |-----|-----|\n" +
+                "   | 25  | 26  |\n" +
+                "   |-----|-----|\n" +
+                "   | 27  | 28  |\n" +
+                "   |-----|-----|\n" +
+
+                "\nSpace on level four:\n\n" +
+                "   |-----|\n" +
+                "   | 29  |\n" +
+                "   |-----|\n\n"+
+                "\nPress the PLACE NEW button when it's your turn!\n\n");
     }
 
+    // popup window that asks player for move
     private void showInputDialog(String prompt) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Your Move");

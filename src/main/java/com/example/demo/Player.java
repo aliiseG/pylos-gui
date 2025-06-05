@@ -6,11 +6,11 @@ public class Player {
 
     public Player(String symbol){
         this.symbol = symbol;
-    };
+    }
 
     public String getSymbol(){
         return symbol;
-    };
+    }
     // if player places new sphere on board
     public void useSphere() {
         spheres--;
