@@ -26,6 +26,7 @@ Currently the game can be played by two players using written input. List of thi
 - <s>show possible moves on top of a stack of spheres</s>
 - players can move up an existing sphere if conditions are met
 - make moves based on mouse click on the board (not by writing input) (!)
+- update winning output / add option to start new game or exit
 - testing
 
 # Screenshots from the game
