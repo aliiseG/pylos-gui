@@ -124,8 +124,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Button fx:id="placeNewBtn" onAction="#startMove" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="135.0" text="Place new" textAlignment="CENTER" />
-                <Button fx:id="removeBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="135.0" text="Remove" textAlignment="CENTER" GridPane.columnIndex="1" />
+                <Button id="placeNewBtn" onAction="#placeSphere" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="135.0" text="Place new" textAlignment="CENTER" />
+                <Button id="removeBtn" onAction="#removeSphere" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="135.0" text="Remove" textAlignment="CENTER" GridPane.columnIndex="1" />
             </children>
         </GridPane>
         <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -137,8 +137,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Button fx:id="exitBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exitProgram" prefHeight="20.0" prefWidth="74.0" text="Exit" />
-                <Button fx:id="resetBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#restartGame" prefHeight="20.0" prefWidth="74.0" text="Reset" GridPane.columnIndex="1" />
+                <Button id="exitBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exitProgram" prefHeight="20.0" prefWidth="74.0" text="Exit" />
+                <Button id="resetBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#restartGame" prefHeight="20.0" prefWidth="74.0" text="Reset" GridPane.columnIndex="1" />
             </children>
         </GridPane>
         <ScrollPane id="rulesPane" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -180,5 +180,8 @@
             </Circle>
         </GridPane>
         <Label fx:id="messageArea" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="603.0" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+    </children>
+    <children>
+        <GridPane fx:id="testGrid" alignment="CENTER" />
     </children>
 </GridPane>
