@@ -3,6 +3,8 @@ package com.example.demo;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -11,7 +13,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.*;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
-import org.controlsfx.control.spreadsheet.Grid;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,11 +40,9 @@ public class GameClientController {
     private ImagePattern spherePattern1;
     private ImagePattern spherePattern2;
     private ImagePattern spherePatternEmpty;
-//    private Boolean startInputPrompt = false;
 
     @FXML
     private void exitProgram(ActionEvent event) {
-        // out.println("e");
         Platform.exit();
         System.exit(0);
     }
@@ -54,10 +53,17 @@ public class GameClientController {
     }
 
     @FXML
-    private void startMove(ActionEvent event) {
+    private void placeSphere(ActionEvent event) {
         if (playerTurnDisplay.getText().contains("Your turn")) {
-            showInputDialog("Select move type: place new (place) + space / remove existing (remove) + space. Or exit game (e) / restart (re)");
-        } else handleServerMessage("OUTPUT: Wait for your turn!");
+            showInputDialog("place !Enter number of available space to place your sphere:");
+        }else handleServerMessage("OUTPUT: Wait for your turn!");
+    }
+
+    @FXML
+    private void removeSphere(ActionEvent event) {
+        if (playerTurnDisplay.getText().contains("Your turn")) {
+            showInputDialog("remove !Enter number of one or two removable spheres (in case of two - write both numbers, seperated by a single space):");
+        }else handleServerMessage("OUTPUT: Wait for your turn!");
     }
 
     private PrintWriter out;
@@ -165,12 +171,6 @@ public class GameClientController {
 
     // decide what happens after getting message from server
     private void handleServerMessage(String msg) {
-        // prompt for player input calling a popup window
-//        if (msg.startsWith("INPUT:")) {
-//            if (startInputPrompt){
-//                showInputDialog(msg);
-//            }
-//        }
         // get current board state and draw it on players board
         if (msg.startsWith("BOARD:")) {
             String boardString = msg.substring("BOARD:".length());
@@ -252,11 +252,12 @@ public class GameClientController {
     // popup window that asks player for move
     private void showInputDialog(String prompt) {
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Your Move");
+        dialog.setTitle("Make your move");
         dialog.setHeaderText(null);
-        dialog.setContentText(prompt.replace("INPUT:", ""));
+        String[] promptArr = prompt.split("!");
+        dialog.setContentText(promptArr[1]);
         Optional<String> result = dialog.showAndWait();
-        result.ifPresent(move -> out.println(move));
+        result.ifPresent(move-> out.println(promptArr[0]+move));
     }
 
     private void showWinnerDialog(String winnerInfo) {
