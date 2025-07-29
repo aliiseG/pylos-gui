@@ -3,9 +3,7 @@ package com.example.demo;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
@@ -203,6 +201,10 @@ public class GameClientController {
         else if (msg.startsWith("OUTPUT")){
             messageArea.setText(msg.substring("OUTPUT:".length()));
         }
+        // create dialog for winnner output
+        else if (msg.startsWith("WINNER")){
+            showWinnerDialog(msg.substring("WINNER:".length()));
+        }
 //        else{
 //            messageArea.setText(msg + "\n");
 //        }
@@ -255,6 +257,14 @@ public class GameClientController {
         dialog.setContentText(prompt.replace("INPUT:", ""));
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(move -> out.println(move));
+    }
+
+    private void showWinnerDialog(String winnerInfo) {
+        Dialog<String> dialog = new Dialog<>();
+        dialog.setTitle("Winner");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Winner is " + winnerInfo +"\n Thank you for playing!");
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.FINISH);
     }
 }
 

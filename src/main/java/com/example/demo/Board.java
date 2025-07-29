@@ -46,10 +46,10 @@ public class Board {
         boardSpaces.add(new Space(m, " ", false, 4,1,1));
     };
 
-    // check if there is a winner
+    // check if there is a winner !!! lai strādātu jāsamaina atpakaļ uz 29!!!
     public String checkWinner(){
-        if (boardSpaces.get(29).getSpacePlayer()!=" "){
-            return boardSpaces.get(29).getSpacePlayer();
+        if (boardSpaces.get(0).getSpacePlayer()!=" "){
+            return boardSpaces.get(0).getSpacePlayer();
         }else return " ";
     };
 

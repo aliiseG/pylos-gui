@@ -255,6 +255,6 @@ public class PylosGame extends Game {
 
     @Override
     protected void announceWinner() {
-        gameServer.broadcast("OUTPUT:Winner is: " + currentPlayer.getSymbol());
+        gameServer.broadcast("WINNER:" + currentPlayer.getSymbol());
     }
 }
