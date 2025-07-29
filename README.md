@@ -21,11 +21,10 @@ Currently the game can be played by two players over the same network. The goal 
 # To-do list
 Currently the game can be played by two players using written input. List of things that have been implemented and that are planned to be:
 - <s>player specific output (sphere color, count, turn messages, error outputs)</s>
-- buttons have functions (<s>exit, resert, place new,</s> remove)
+- <s>buttons have functions (exit, resert, place new, remove)</s>
 - <s>players can place new spheres</s>
 - <s>players can remove existing spheres if conditions are met</s>
 - <s>show possible moves on top of a stack of spheres</s>
-- players can move up an existing sphere if conditions are met
 - make moves based on mouse click on the board (not by writing input) (!)
 - update winning output / add option to start new game or exit
 - testing
