@@ -29,7 +29,6 @@ public abstract class Game {
                 switchTurn();
             }
         }
-
         announceWinner();
     }
 

@@ -204,6 +204,7 @@ public class GameClientController {
         // create dialog for winnner output
         else if (msg.startsWith("WINNER")){
             showWinnerDialog(msg.substring("WINNER:".length()));
+            messageArea.setText(msg.substring("WINNER:".length()));
         }
 //        else{
 //            messageArea.setText(msg + "\n");
@@ -261,11 +262,22 @@ public class GameClientController {
     }
 
     private void showWinnerDialog(String winnerInfo) {
-        Dialog<String> dialog = new Dialog<>();
-        dialog.setTitle("Winner");
-        dialog.setHeaderText(null);
-        dialog.setContentText("Winner is " + winnerInfo +"\n Thank you for playing!");
-        dialog.getDialogPane().getButtonTypes().add(ButtonType.FINISH);
+//        TextInputDialog dialog = new TextInputDialog();
+//        dialog.setTitle("Winner");
+//        dialog.setHeaderText(null);
+//        dialog.setContentText("Winner is " + winnerInfo +"\n Thank you for playing!");
+//        dialog.getDialogPane().getButtonTypes().add(ButtonType.FINISH);
+//        dialog.showAndWait();
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Game Over");
+            alert.setHeaderText(null);
+            alert.setContentText("🏆 Winner is " + winnerInfo + "\nThank you for playing!");
+            alert.showAndWait();
+
+            // Optionally close socket/output if needed
+            // out.close(); or System.exit(0);
+        });
     }
 }
 

@@ -29,6 +29,7 @@ public class GameServer {
         // create new game instance, start game
         PylosGame gameInstance = new PylosGame(this);
         gameInstance.startGame();
+        while(true);
     }
 
     // both players get the same message
